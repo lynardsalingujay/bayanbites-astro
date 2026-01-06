@@ -14,29 +14,33 @@ const cuisineName = cuisine?.data?.attributes?.name;
 ---
 
 <div
-  class="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl h-full flex flex-col"
+  class="group bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col border-2 border-gray-200"
 >
-  <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+  <div class="relative aspect-[16/11] overflow-hidden bg-gray-100">
     {
       imageUrl ? (
-        <img src={imageUrl} alt={name} class="w-full h-full object-cover" />
+        <img
+          src={imageUrl}
+          alt={name}
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
       ) : (
-        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-2xl opacity-50">
-          <span>Bayan Bites</span>
+        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6B4423] to-[#8B5A2B] text-white font-bold text-2xl">
+          <span class="opacity-90">Bayan Bites</span>
         </div>
       )
     }
 
     {
       (isMadeToOrder || cuisineName) && (
-        <div class="absolute top-3 right-3 flex flex-col gap-2 items-end">
+        <div class="absolute top-4 right-4 flex flex-col gap-2 items-end">
           {isMadeToOrder && (
-            <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/95 text-purple-600 border border-purple-200 backdrop-blur-sm">
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-white text-[#6B4423] shadow-lg border-2 border-[#6B4423]">
               Made to Order
             </span>
           )}
           {cuisineName && (
-            <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white/90 text-emerald-600 border border-emerald-200 backdrop-blur-sm">
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FDF6EE] text-[#F5A623] shadow-lg border-2 border-[#F5A623]">
               {cuisineName}
             </span>
           )}
@@ -45,17 +49,21 @@ const cuisineName = cuisine?.data?.attributes?.name;
     }
   </div>
 
-  <div class="p-5 flex-grow flex flex-col">
-    <div class="flex justify-between items-start gap-4 mb-2">
-      <h3 class="text-xl font-bold text-gray-900 leading-tight m-0">{name}</h3>
-      <span class="text-emerald-600 font-bold text-lg whitespace-nowrap"
+  <div class="p-6 flex-grow flex flex-col">
+    <div class="flex justify-between items-start gap-4 mb-3">
+      <h3
+        class="text-xl font-bold text-[#6B4423] leading-tight m-0 group-hover:text-[#F5A623] transition-colors"
+      >
+        {name}
+      </h3>
+      <span class="text-[#F5A623] font-bold text-xl whitespace-nowrap"
         >${price.toFixed(2)}</span
       >
     </div>
 
     {
       description && (
-        <p class="text-gray-600 text-sm leading-relaxed m-0 line-clamp-3">
+        <p class="text-[#8B7355] text-sm leading-relaxed m-0 line-clamp-3">
           {description}
         </p>
       )

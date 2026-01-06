@@ -21,41 +21,294 @@ try {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Bayan Bites - Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bayan Bites - Authentic flavors, Made with love</title>
+    <meta
+      name="description"
+      content="Experience the warmth of home-cooked meals. Traditional Filipino cuisine with a modern twist."
+    />
   </head>
-  <body class="m-0 p-0 font-sans bg-gray-50">
-    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-8">
-      <header class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
-          Bayan Bites Menu
-        </h1>
-        <p class="text-gray-600 text-lg">Delicious homemade Filipino cuisine</p>
-      </header>
+  <body class="m-0 p-0 bg-[#f5f1ed]" style="font-family: 'Inter', sans-serif;">
+    <!-- Navigation -->
+    <nav
+      class="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-[#6B4423]">Bayan Bites</span>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="/"
+              class="text-[#F5A623] hover:text-[#E09612] font-medium transition-colors"
+              >Home</a
+            >
+            <a
+              href="#menu"
+              class="text-[#6B4423] hover:text-[#8B5A2B] font-medium transition-colors"
+              >Menu</a
+            >
+            <a
+              href="#about"
+              class="text-[#6B4423] hover:text-[#8B5A2B] font-medium transition-colors"
+              >Our Story</a
+            >
+            <a
+              href="#contact"
+              class="text-[#6B4423] hover:text-[#8B5A2B] font-medium transition-colors"
+              >Contact & Order</a
+            >
+          </div>
+          <button
+            class="bg-[#6B4423] hover:bg-[#8B5A2B] text-white px-6 py-2 rounded-full font-semibold transition-colors"
+          >
+            Order Now
+          </button>
+        </div>
+      </div>
+    </nav>
 
-      {
-        error ? (
-          <div class="bg-red-50 border-2 border-red-300 rounded-lg p-6 text-center">
-            <p class="my-2 text-red-900">⚠️ {error}</p>
-            <p class="text-sm text-red-600">
-              Please check your Strapi configuration and ensure the server is
-              accessible.
+    <!-- Hero Section -->
+    <section class="relative bg-[#f5f1ed] py-20 sm:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-left max-w-2xl">
+          <h1
+            class="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight"
+          >
+            <span class="text-[#6B4423]">Authentic flavors,</span><br /><span
+              class="text-[#F5A623]">Made with love.</span
+            >
+          </h1>
+          <p class="text-xl text-[#8B7355] mb-8 leading-relaxed">
+            Experience the warmth of home-cooked meals. We bring traditional
+            Filipino recipes to your table with a modern twist.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#menu"
+              class="bg-[#6B4423] hover:bg-[#8B5A2B] text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center gap-2"
+            >
+              View Menu
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a
+              href="#contact"
+              class="bg-white hover:bg-gray-50 text-[#6B4423] px-8 py-4 rounded-full font-semibold text-lg border-2 border-[#6B4423] transition-colors inline-block"
+            >
+              Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div class="text-center">
+            <div
+              class="bg-[#FDF6EE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#F5A623]"
+            >
+              <svg
+                class="w-8 h-8 text-[#F5A623]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-[#6B4423] mb-3">
+              Authentic Recipes
+            </h3>
+            <p class="text-[#8B7355] text-base">
+              Traditional flavors passed down through generations.
             </p>
           </div>
-        ) : menu?.data && menu.data.length > 0 ? (
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8">
-            {menu.data.map((item: MenuItem) => (
-              <SimpleMenuCard item={item} />
-            ))}
-          </div>
-        ) : (
-          <div class="text-center py-16 px-8 text-gray-600">
-            <p class="my-2">No menu items found.</p>
-            <p class="text-sm text-gray-400">
-              Add items to your Strapi CMS to see them here.
+          <div class="text-center">
+            <div
+              class="bg-[#ff6b35]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-[#262626]"
+            >
+              <svg
+                class="w-8 h-8 text-[#ff6b35]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-[#6B4423] mb-3">
+              Fresh Ingredients
+            </h3>
+            <p class="text-[#8B7355] text-base">
+              Locally sourced produce and premium quality meats.
             </p>
           </div>
-        )
-      }
-    </main>
+          <div class="text-center">
+            <div
+              class="bg-[#ff6b35]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-[#262626]"
+            >
+              <svg
+                class="w-8 h-8 text-[#ff6b35]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-[#6B4423] mb-3">Made to Order</h3>
+            <p class="text-[#8B7355] text-base">
+              Every dish is prepared fresh when you order it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-[#f5f1ed]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-4xl font-extrabold text-[#6B4423] mb-4 tracking-tight"
+          >
+            Our Menu
+          </h2>
+          <p class="text-xl text-[#8B7355]">
+            Delicious homemade Filipino cuisine
+          </p>
+        </div>
+
+        {
+          error ? (
+            <div class="bg-red-50 border-2 border-red-300 rounded-xl p-8 text-center max-w-2xl mx-auto">
+              <p class="text-2xl mb-2">⚠️</p>
+              <p class="text-lg font-semibold text-red-800 mb-2">{error}</p>
+              <p class="text-sm text-red-600">
+                Please check your Strapi configuration and ensure the server is
+                accessible.
+              </p>
+            </div>
+          ) : menu?.data && menu.data.length > 0 ? (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {menu.data.map((item: MenuItem) => (
+                <SimpleMenuCard item={item} />
+              ))}
+            </div>
+          ) : (
+            <div class="text-center py-20 px-8">
+              <p class="text-2xl font-semibold text-[#6B4423] mb-2">
+                No menu items found.
+              </p>
+              <p class="text-[#8B7355]">
+                Add items to your Strapi CMS to see them here.
+              </p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#6B4423] text-[#D4C4B0] py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div>
+            <h3 class="text-white text-xl font-bold mb-4">Bayan Bites</h3>
+            <p class="text-sm">
+              Authentic flavors made with love. Experience the warmth of
+              home-cooked meals in every bite.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">Explore</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="/" class="hover:text-white transition-colors">Home</a>
+              </li>
+              <li>
+                <a href="#menu" class="hover:text-white transition-colors"
+                  >Menu</a
+                >
+              </li>
+              <li>
+                <a href="#about" class="hover:text-white transition-colors"
+                  >Our Story</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-white transition-colors"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">Visit Us</h4>
+            <ul class="space-y-2 text-sm">
+              <li>123 Culinary Avenue</li>
+              <li>Food District, FD 45678</li>
+              <li class="pt-2">+1 (555) 123-4567</li>
+              <li>hello@bayanbites.com</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-4">Stay Updated</h4>
+            <p class="text-sm mb-4">
+              Subscribe for seasonal specials and exclusive offers.
+            </p>
+            <div class="flex gap-2">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="px-4 py-2 rounded-lg bg-[#8B5A2B] text-white placeholder-[#D4C4B0] border border-[#8B5A2B] focus:outline-none focus:border-[#F5A623] flex-1"
+              />
+              <button
+                class="bg-[#F5A623] hover:bg-[#E09612] text-[#6B4423] px-4 py-2 rounded-lg font-semibold transition-colors"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-[#8B5A2B] mt-12 pt-8 text-center text-sm">
+          <p>© 2026 Bayan Bites. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
