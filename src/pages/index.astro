@@ -1,16 +1,16 @@
 ---
-import { fetchStrapi, type MenuItem, type StrapiResponse } from '../lib/strapi';
-import SimpleMenuCard from '../components/SimpleMenuCard.astro';
+import { fetchStrapi, type MenuItem, type StrapiResponse } from "../lib/strapi";
+import SimpleMenuCard from "../components/SimpleMenuCard.astro";
 
 let menu: StrapiResponse<MenuItem> | null = null;
 let error: string | null = null;
 
 try {
-  menu = await fetchStrapi<MenuItem>('menu-items');
+  menu = await fetchStrapi<MenuItem>("menu-items");
 } catch (e) {
-  error = e instanceof Error ? e.message : 'An unknown error occurred';
+  error = e instanceof Error ? e.message : "An unknown error occurred";
   if (import.meta.env.DEV) {
-    console.error('Error fetching menu:', e);
+    console.error("Error fetching menu:", e);
   }
 }
 ---
@@ -23,123 +23,39 @@ try {
     <meta name="generator" content={Astro.generator} />
     <title>Bayan Bites - Menu</title>
   </head>
-  <body>
-    <main>
-      <header>
-        <h1>Bayan Bites Menu</h1>
-        <p>Delicious homemade Filipino cuisine</p>
+  <body class="m-0 p-0 font-sans bg-gray-50">
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-8">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+          Bayan Bites Menu
+        </h1>
+        <p class="text-gray-600 text-lg">Delicious homemade Filipino cuisine</p>
       </header>
-      
-      {error ? (
-        <div class="error">
-          <p>⚠️ {error}</p>
-          <p class="error-hint">Please check your Strapi configuration and ensure the server is accessible.</p>
-        </div>
-      ) : menu?.data && menu.data.length > 0 ? (
-        <div class="grid">
-          {menu.data.map((item: MenuItem) => (
-            <SimpleMenuCard item={item} />
-          ))}
-        </div>
-      ) : (
-        <div class="empty">
-          <p>No menu items found.</p>
-          <p class="empty-hint">Add items to your Strapi CMS to see them here.</p>
-        </div>
-      )}
+
+      {
+        error ? (
+          <div class="bg-red-50 border-2 border-red-300 rounded-lg p-6 text-center">
+            <p class="my-2 text-red-900">⚠️ {error}</p>
+            <p class="text-sm text-red-600">
+              Please check your Strapi configuration and ensure the server is
+              accessible.
+            </p>
+          </div>
+        ) : menu?.data && menu.data.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8">
+            {menu.data.map((item: MenuItem) => (
+              <SimpleMenuCard item={item} />
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-16 px-8 text-gray-600">
+            <p class="my-2">No menu items found.</p>
+            <p class="text-sm text-gray-400">
+              Add items to your Strapi CMS to see them here.
+            </p>
+          </div>
+        )
+      }
     </main>
   </body>
 </html>
-
-<style>
-  :global(body) {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f9fafb;
-  }
-  
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #111827;
-    margin: 0 0 0.5rem 0;
-  }
-  
-  header p {
-    color: #6b7280;
-    font-size: 1.125rem;
-    margin: 0;
-  }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .error {
-    background: #fef2f2;
-    border: 2px solid #fca5a5;
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-align: center;
-  }
-  
-  .error p {
-    margin: 0.5rem 0;
-    color: #991b1b;
-  }
-  
-  .error-hint {
-    font-size: 0.875rem;
-    color: #dc2626 !important;
-  }
-  
-  .empty {
-    text-align: center;
-    padding: 3rem;
-    color: #6b7280;
-  }
-  
-  .empty p {
-    margin: 0.5rem 0;
-  }
-  
-  .empty-hint {
-    font-size: 0.875rem;
-    color: #9ca3af;
-  }
-  
-  .empty {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: #6b7280;
-  }
-  
-  @media (max-width: 768px) {
-    main {
-      padding: 1rem;
-    }
-    
-    h1 {
-      font-size: 2rem;
-    }
-    
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-  }
-</style>
