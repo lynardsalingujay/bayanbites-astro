@@ -9,4 +9,12 @@ export default defineConfig({
     domains: ['bayanbites.skyguyver.com'],
   },
   integrations: [tailwind()],
+  vite: {
+    server: {
+      allowedHosts: [
+        'vilma-unreverberated-undespondently.ngrok-free.dev',
+        'localhost',
+      ],
+    },
+  },
 });
