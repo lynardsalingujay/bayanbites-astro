@@ -188,6 +188,52 @@ export async function fetchStrapiSingle(endpoint: string): Promise<HomepageRespo
   }
 }
 
+// Download image from Strapi and save it locally during build
+export async function downloadStrapiImage(url: string | undefined | null): Promise<string | null> {
+  if (!url) return null;
+  
+  // If it's a relative URL, make it absolute
+  const fullUrl = url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+  
+  // Extract filename from URL
+  const urlPath = new URL(fullUrl).pathname;
+  const filename = urlPath.split('/').pop();
+  
+  if (!filename) return null;
+  
+  try {
+    // Download the image
+    const response = await fetch(fullUrl);
+    if (!response.ok) {
+      console.error(`Failed to download image: ${fullUrl}`);
+      return fullUrl; // Fallback to remote URL
+    }
+    
+    // Get the image buffer
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    
+    // Create uploads directory if it doesn't exist
+    const fs = await import('fs');
+    const path = await import('path');
+    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+    
+    if (!fs.existsSync(uploadsDir)) {
+      fs.mkdirSync(uploadsDir, { recursive: true });
+    }
+    
+    // Save the image
+    const localPath = path.join(uploadsDir, filename);
+    fs.writeFileSync(localPath, buffer);
+    
+    // Return the local path (relative to public folder)
+    return `/uploads/${filename}`;
+  } catch (error) {
+    console.error(`Error downloading image ${fullUrl}:`, error);
+    return fullUrl; // Fallback to remote URL on error
+  }
+}
+
 export function getStrapiMedia(url: string | undefined | null) {
   if (!url) return null;
   

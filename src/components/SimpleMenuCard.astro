@@ -1,5 +1,5 @@
 ---
-import { getStrapiMedia, type MenuItem } from "../lib/strapi";
+import { downloadStrapiImage, type MenuItem } from "../lib/strapi";
 
 interface Props {
   item: MenuItem;
@@ -9,7 +9,8 @@ const { item } = Astro.props;
 const { name, description, price, isMadeToOrder, image, cuisine } =
   item.attributes;
 
-const imageUrl = getStrapiMedia(image?.data?.attributes?.url);
+// Download image at build time and get local path
+const imageUrl = await downloadStrapiImage(image?.data?.attributes?.url);
 const cuisineName = cuisine?.data?.attributes?.name;
 ---
 

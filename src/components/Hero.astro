@@ -1,11 +1,19 @@
 ---
-import { getStrapiMedia, type HeroSection } from "../lib/strapi";
+import { downloadStrapiImage, type HeroSection } from "../lib/strapi";
 
 interface Props {
   heroData: HeroSection | null;
 }
 
 const { heroData } = Astro.props;
+
+// Debug: Check what data we received
+if (import.meta.env.DEV) {
+  console.log(
+    "Hero component received heroData:",
+    JSON.stringify(heroData, null, 2)
+  );
+}
 
 // Use Strapi data if available, otherwise use fallback defaults
 const heroTitle = heroData?.heroTitle || "Authentic flavors,Made with love.";
@@ -18,7 +26,8 @@ const primaryCtaLink = heroData?.primaryCtaLink || "#menu";
 const secondaryCtaText = heroData?.secondaryCtaText || "Order Now";
 const secondaryCtaLink = heroData?.secondaryCtaLink || "#contact";
 
-const imageUrl = getStrapiMedia(heroImage?.data?.attributes?.url);
+// Download image at build time and get local path
+const imageUrl = await downloadStrapiImage(heroImage?.data?.attributes?.url);
 const imageAlt = heroImage?.data?.attributes?.alternativeText || heroTitle;
 ---
 
