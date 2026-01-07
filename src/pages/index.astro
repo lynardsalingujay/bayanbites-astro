@@ -8,31 +8,15 @@ import {
 import SimpleMenuCard from "../components/SimpleMenuCard.astro";
 import Hero from "../components/Hero.astro";
 
-let menu: StrapiResponse<MenuItem> | null = null;
-let homepage = null;
-let heroData = null;
-let error: string | null = null;
+// ⚡ BUILD-TIME DATA FETCHING
+// All Strapi API calls execute during build (astro build), NOT at runtime.
+// If Strapi is unavailable, the build will fail loudly with clear error messages.
+// The final output is pure static HTML with embedded content.
 
-try {
-  // Fetch menu items
-  menu = await fetchStrapi<MenuItem>("menu-items");
-
-  // Fetch homepage data
-  try {
-    homepage = await fetchStrapiSingle("home-page");
-    heroData = homepage?.data?.attributes?.heroSection || null;
-  } catch (heroError) {
-    if (import.meta.env.DEV) {
-      console.error("Error fetching homepage:", heroError);
-    }
-    // Don't set error if only homepage fails, continue with menu
-  }
-} catch (e) {
-  error = e instanceof Error ? e.message : "An unknown error occurred";
-  if (import.meta.env.DEV) {
-    console.error("Error fetching menu:", e);
-  }
-}
+// const menu = await fetchStrapi<MenuItem>("menu-items");
+const homepage = await fetchStrapiSingle("homepage");
+const heroSection = homepage?.data?.attributes?.heroSection;
+const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection;
 ---
 
 <!doctype html>
@@ -126,7 +110,8 @@ try {
       </div>
     </section>
 
-    <!-- Menu Section -->
+    <!-- Menu Section - Temporarily commented out -->
+    <!--
     <section id="menu" class="py-20 bg-[#f5f1ed]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-4xl font-bold text-center mb-4 text-[#6B4423]">
@@ -136,20 +121,12 @@ try {
           Discover our delicious selection of Filipino favorites
         </p>
 
-        {
-          error && (
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-8">
-              <p>Error loading menu: {error}</p>
-            </div>
-          )
-        }
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {menu?.data?.map((item) => <SimpleMenuCard item={item} />)}
         </div>
 
         {
-          !menu?.data?.length && !error && (
+          !menu?.data?.length && (
             <p class="text-center text-[#8B7355]">
               No menu items available at the moment.
             </p>
@@ -157,6 +134,7 @@ try {
         }
       </div>
     </section>
+    -->
 
     <!-- Footer -->
     <footer class="bg-[#6B4423] text-white py-12">

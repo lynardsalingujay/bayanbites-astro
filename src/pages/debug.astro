@@ -1,16 +1,12 @@
 ---
 import { fetchStrapiSingle } from "../lib/strapi";
 
-let homepage = null;
-let error = null;
+// ⚡ BUILD-TIME DATA FETCHING
+// This page fetches data during build (astro build), NOT at runtime.
+// If Strapi is unavailable, the build will fail with clear error messages.
 
-try {
-  homepage = await fetchStrapiSingle("home-page");
-  console.log("Homepage response:", JSON.stringify(homepage, null, 2));
-} catch (e) {
-  error = e instanceof Error ? e.message : "Unknown error";
-  console.error("Error fetching homepage:", e);
-}
+const homepage = await fetchStrapiSingle("homepage");
+console.log("Homepage response:", JSON.stringify(homepage, null, 2));
 ---
 
 <html lang="en">
@@ -46,11 +42,7 @@ try {
 
     <h2>Status:</h2>
     {
-      error ? (
-        <div class="error">
-          <p>❌ Error: {error}</p>
-        </div>
-      ) : homepage ? (
+      homepage ? (
         <div class="success">
           <p>✅ Successfully fetched homepage data</p>
         </div>

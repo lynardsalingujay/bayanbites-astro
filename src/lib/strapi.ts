@@ -1,5 +1,14 @@
 // Strapi API Configuration
-const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || 'http://bayanbites.skyguyver.com';
+// Validate that STRAPI_URL is set at build time
+if (!import.meta.env.PUBLIC_STRAPI_URL) {
+  throw new Error(
+    '❌ STRAPI_URL validation failed: PUBLIC_STRAPI_URL environment variable is required.\n' +
+    'Please set it in your .env file or build environment.\n' +
+    'Example: PUBLIC_STRAPI_URL=https://your-strapi-instance.com'
+  );
+}
+
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL;
 const STRAPI_TOKEN = import.meta.env.STRAPI_API_TOKEN;
 
 // TypeScript Interfaces
