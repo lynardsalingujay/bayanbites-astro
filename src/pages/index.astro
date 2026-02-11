@@ -4,64 +4,82 @@ import {
   fetchStrapiSingle,
   type MenuItem,
   type StrapiResponse,
-} from "../lib/strapi";
-import SimpleMenuCard from "../components/SimpleMenuCard.astro";
-import Hero from "../components/Hero.astro";
+} from '../lib/strapi'
+import SimpleMenuCard from '../components/SimpleMenuCard.astro'
+import Hero from '../components/Hero.astro'
 
 // ⚡ BUILD-TIME DATA FETCHING
 // All Strapi API calls execute during build (astro build), NOT at runtime.
 // If Strapi is unavailable, the build will fail loudly with clear error messages.
 // The final output is pure static HTML with embedded content.
 
-const menu = await fetchStrapi<MenuItem>("menu-items");
-const homepage = await fetchStrapiSingle("homepage");
-const heroSection = homepage?.data?.attributes?.heroSection;
-const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection;
+const menu = await fetchStrapi<MenuItem>('menu-items')
+const homepage = await fetchStrapiSingle('homepage')
+const heroSection = homepage?.data?.attributes?.heroSection
+const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Authentic Filipino home-cooked meals" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset='UTF-8' />
+    <meta name='description' content='Authentic Filipino home-cooked meals' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
+      href='https://fonts.googleapis.com/css2?family=Candal&display=swap'
+      rel='stylesheet'
     />
     <title>BayanBites - Authentic Filipino Home-Cooked Meals</title>
   </head>
-  <body class="font-['Inter'] bg-[#f5f1ed]">
+  <body class="font-['Candal'] bg-[#f5f1ed]">
+    <!-- Top Announcement Banner -->
+    <div class='bg-[#ab2a08] text-[#FFFFFF] py-3 text-center'>
+      <p class='text-sm md:text-base font-medium px-4'>
+        Authentic Filipino Home-Cooked Meals, Made with Love
+      </p>
+    </div>
+
     <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <div class="flex items-center">
-            <span class="text-2xl font-bold text-[#6B4423]">BayanBites</span>
+    <nav
+      id='main-nav'
+      class='bg-white shadow-md sticky top-0 z-50 transition-transform duration-300'
+    >
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
+        <div class='flex flex-col items-center space-y-4'>
+          <!-- Logo -->
+          <div class='flex items-center justify-center'>
+            <img
+              src='/logo.png'
+              alt='BayanBites Logo'
+              class='h-16 md:h-20 w-auto'
+            />
           </div>
-          <div class="hidden md:flex space-x-8">
+          <!-- Navigation Links -->
+          <div
+            class='flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8'
+          >
             <a
-              href="#home"
-              class="text-[#6B4423] hover:text-[#F5A623] font-medium transition-colors"
+              href='#home'
+              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
               >Home</a
             >
             <a
-              href="#menu"
-              class="text-[#6B4423] hover:text-[#F5A623] font-medium transition-colors"
+              href='#menu'
+              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
               >Menu</a
             >
             <a
-              href="#about"
-              class="text-[#6B4423] hover:text-[#F5A623] font-medium transition-colors"
+              href='#about'
+              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
               >About</a
             >
             <a
-              href="#contact"
-              class="text-[#6B4423] hover:text-[#F5A623] font-medium transition-colors"
+              href='#contact'
+              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
               >Contact</a
             >
           </div>
@@ -73,36 +91,36 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection;
     <Hero heroData={heroData} />
 
     <!-- Why Choose Us Section -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-bold text-center mb-12 text-[#6B4423]">
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <h2 class='text-4xl font-bold text-center mb-12 text-[#ab2a08]'>
           Why Choose BayanBites?
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="text-center p-6">
-            <div class="text-5xl mb-4">🏠</div>
-            <h3 class="text-xl font-semibold mb-2 text-[#6B4423]">
+        <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
+          <div class='text-center p-6'>
+            <div class='text-5xl mb-4'>🏠</div>
+            <h3 class='text-xl font-semibold mb-2 text-[#ab2a08]'>
               Home-Cooked Goodness
             </h3>
-            <p class="text-[#8B7355]">
+            <p class='text-[#8B7355]'>
               Every dish is prepared with love, just like home.
             </p>
           </div>
-          <div class="text-center p-6">
-            <div class="text-5xl mb-4">🌾</div>
-            <h3 class="text-xl font-semibold mb-2 text-[#6B4423]">
+          <div class='text-center p-6'>
+            <div class='text-5xl mb-4'>🌾</div>
+            <h3 class='text-xl font-semibold mb-2 text-[#ab2a08]'>
               Fresh Ingredients
             </h3>
-            <p class="text-[#8B7355]">
+            <p class='text-[#8B7355]'>
               We use only the freshest, locally-sourced ingredients.
             </p>
           </div>
-          <div class="text-center p-6">
-            <div class="text-5xl mb-4">❤️</div>
-            <h3 class="text-xl font-semibold mb-2 text-[#6B4423]">
+          <div class='text-center p-6'>
+            <div class='text-5xl mb-4'>❤️</div>
+            <h3 class='text-xl font-semibold mb-2 text-[#ab2a08]'>
               Made with Love
             </h3>
-            <p class="text-[#8B7355]">
+            <p class='text-[#8B7355]'>
               Recipes passed down through generations.
             </p>
           </div>
@@ -111,22 +129,22 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection;
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="py-20 bg-[#f5f1ed]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-bold text-center mb-4 text-[#6B4423]">
+    <section id='menu' class='py-20 bg-[#f5f1ed]'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <h2 class='text-4xl font-bold text-center mb-4 text-[#ab2a08]'>
           Our Menu
         </h2>
-        <p class="text-center text-[#8B7355] mb-12 text-lg">
+        <p class='text-center text-[#8B7355] mb-12 text-lg'>
           Discover our delicious selection of Filipino favorites
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {menu?.data?.map((item) => <SimpleMenuCard item={item} />)}
         </div>
 
         {
           !menu?.data?.length && (
-            <p class="text-center text-[#8B7355]">
+            <p class='text-center text-[#8B7355]'>
               No menu items available at the moment.
             </p>
           )
@@ -135,60 +153,88 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection;
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#6B4423] text-white py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer class='bg-[#ab2a08] text-white py-12'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
           <div>
-            <h3 class="text-2xl font-bold mb-4">BayanBites</h3>
-            <p class="text-[#f5f1ed]">
+            <h3 class='text-2xl font-bold mb-4'>BayanBites</h3>
+            <p class='text-[#f5f1ed]'>
               Bringing authentic Filipino flavors to your table.
             </p>
           </div>
           <div>
-            <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
-            <ul class="space-y-2">
+            <h4 class='text-xl font-semibold mb-4'>Quick Links</h4>
+            <ul class='space-y-2'>
               <li>
                 <a
-                  href="#home"
-                  class="text-[#f5f1ed] hover:text-[#F5A623] transition-colors"
+                  href='#home'
+                  class='text-[#f5f1ed] hover:text-[#F5A623] transition-colors'
                   >Home</a
                 >
               </li>
               <li>
                 <a
-                  href="#menu"
-                  class="text-[#f5f1ed] hover:text-[#F5A623] transition-colors"
+                  href='#menu'
+                  class='text-[#f5f1ed] hover:text-[#F5A623] transition-colors'
                   >Menu</a
                 >
               </li>
               <li>
                 <a
-                  href="#about"
-                  class="text-[#f5f1ed] hover:text-[#F5A623] transition-colors"
+                  href='#about'
+                  class='text-[#f5f1ed] hover:text-[#F5A623] transition-colors'
                   >About</a
                 >
               </li>
               <li>
                 <a
-                  href="#contact"
-                  class="text-[#f5f1ed] hover:text-[#F5A623] transition-colors"
+                  href='#contact'
+                  class='text-[#f5f1ed] hover:text-[#F5A623] transition-colors'
                   >Contact</a
                 >
               </li>
             </ul>
           </div>
           <div>
-            <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
-            <p class="text-[#f5f1ed] mb-2">Email: info@bayanbites.com</p>
-            <p class="text-[#f5f1ed]">Phone: (123) 456-7890</p>
+            <h4 class='text-xl font-semibold mb-4'>Contact Us</h4>
+            <p class='text-[#f5f1ed] mb-2'>Email: info@bayanbites.com</p>
+            <p class='text-[#f5f1ed]'>Phone: (123) 456-7890</p>
           </div>
         </div>
-        <div class="mt-8 pt-8 border-t border-[#8B7355] text-center">
-          <p class="text-[#f5f1ed]">
+        <div class='mt-8 pt-8 border-t border-[#8B7355] text-center'>
+          <p class='text-[#f5f1ed]'>
             &copy; 2026 BayanBites. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
+
+    <script>
+      // Hide navigation on scroll down, show on scroll up
+      let lastScrollTop = 0
+      const nav = document.getElementById('main-nav')
+      const scrollThreshold = 100 // Start hiding after scrolling 100px
+
+      window.addEventListener('scroll', () => {
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop
+
+        // Only apply hide/show behavior after scrolling past threshold
+        if (scrollTop > scrollThreshold) {
+          if (scrollTop > lastScrollTop) {
+            // Scrolling down - hide nav
+            nav.style.transform = 'translateY(-100%)'
+          } else {
+            // Scrolling up - show nav
+            nav.style.transform = 'translateY(0)'
+          }
+        } else {
+          // At top of page - always show nav
+          nav.style.transform = 'translateY(0)'
+        }
+
+        lastScrollTop = scrollTop
+      })
+    </script>
   </body>
 </html>
