@@ -43,25 +43,100 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
       </p>
     </div>
 
+    <!-- Mobile Menu Overlay -->
+    <div
+      id='mobile-overlay'
+      class='fixed inset-0 bg-black bg-opacity-50 z-40 hidden'
+    >
+    </div>
+
+    <!-- Mobile Sidebar Menu -->
+    <div
+      id='mobile-menu'
+      class='fixed left-0 w-64 bg-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out'
+      style='top: var(--nav-height, 0px); height: calc(100vh - var(--nav-height, 0px));'
+    >
+      <div class='flex flex-col h-full'>
+        <!-- Mobile Navigation Links -->
+        <nav class='flex flex-col space-y-6 px-8 pt-20 pb-8'>
+          <a
+            href='#home'
+            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
+            >Home</a
+          >
+          <a
+            href='#menu'
+            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
+            >Menu</a
+          >
+          <a
+            href='#about'
+            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
+            >About</a
+          >
+          <a
+            href='#contact'
+            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
+            >Contact</a
+          >
+        </nav>
+      </div>
+    </div>
+
     <!-- Navigation -->
     <nav
       id='main-nav'
       class='bg-white shadow-md sticky top-0 z-50 transition-transform duration-300'
     >
       <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
-        <div class='flex flex-col items-center space-y-4'>
+        <div class='flex justify-between items-center md:flex-col md:space-y-4'>
+          <!-- Hamburger/Close Button (Mobile Only) -->
+          <button
+            id='hamburger-btn'
+            class='md:hidden text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+            aria-label='Toggle menu'
+          >
+            <!-- Hamburger Icon -->
+            <svg
+              id='hamburger-icon'
+              class='w-6 h-6'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M4 6h16M4 12h16M4 18h16'></path>
+            </svg>
+            <!-- Close Icon (Hidden by default) -->
+            <svg
+              id='close-icon'
+              class='w-6 h-6 hidden'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M6 18L18 6M6 6l12 12'></path>
+            </svg>
+          </button>
+
           <!-- Logo -->
           <div class='flex items-center justify-center'>
             <img
               src='/logo.png'
               alt='BayanBites Logo'
-              class='h-16 md:h-20 w-auto'
+              class='h-12 md:h-16 lg:h-20 w-auto'
             />
           </div>
-          <!-- Navigation Links -->
-          <div
-            class='flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8'
-          >
+
+          <!-- Desktop Navigation Links (Hidden on Mobile) -->
+          <div class='hidden md:flex items-center space-x-8'>
             <a
               href='#home'
               class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
@@ -83,6 +158,9 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
               >Contact</a
             >
           </div>
+
+          <!-- Spacer for mobile to center logo -->
+          <div class='md:hidden w-6'></div>
         </div>
       </div>
     </nav>
@@ -210,6 +288,59 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
     </footer>
 
     <script>
+      // Set navbar height for mobile menu positioning
+      function updateNavHeight() {
+        const nav = document.getElementById('main-nav')
+        if (nav) {
+          const navHeight = nav.offsetHeight
+          document.documentElement.style.setProperty('--nav-height', `${navHeight}px`)
+        }
+      }
+
+      // Update on load and resize
+      updateNavHeight()
+      window.addEventListener('resize', updateNavHeight)
+
+      // Mobile menu toggle functionality
+      const hamburgerBtn = document.getElementById('hamburger-btn')
+      const hamburgerIcon = document.getElementById('hamburger-icon')
+      const closeIcon = document.getElementById('close-icon')
+      const mobileMenu = document.getElementById('mobile-menu')
+      const mobileOverlay = document.getElementById('mobile-overlay')
+      const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link')
+
+      function openMenu() {
+        mobileMenu.classList.remove('-translate-x-full')
+        mobileOverlay.classList.remove('hidden')
+        hamburgerIcon.classList.add('hidden')
+        closeIcon.classList.remove('hidden')
+        document.body.style.overflow = 'hidden'
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.add('-translate-x-full')
+        mobileOverlay.classList.add('hidden')
+        hamburgerIcon.classList.remove('hidden')
+        closeIcon.classList.add('hidden')
+        document.body.style.overflow = ''
+      }
+
+      hamburgerBtn?.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('-translate-x-full')) {
+          openMenu()
+        } else {
+          closeMenu()
+        }
+      })
+
+      // Close menu when clicking on overlay
+      mobileOverlay?.addEventListener('click', closeMenu)
+
+      // Close menu when clicking on a link
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener('click', closeMenu)
+      })
+
       // Hide navigation on scroll down, show on scroll up
       let lastScrollTop = 0
       const nav = document.getElementById('main-nav')
