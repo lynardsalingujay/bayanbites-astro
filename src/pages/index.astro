@@ -30,15 +30,15 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href='https://fonts.googleapis.com/css2?family=Candal&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap'
       rel='stylesheet'
     />
     <title>BayanBites - Authentic Filipino Home-Cooked Meals</title>
   </head>
-  <body class="font-['Candal'] bg-[#f5f1ed]">
+  <body class="font-['Playfair_Display'] bg-[#f5f1ed]">
     <!-- Top Announcement Banner -->
     <div class='bg-[#ab2a08] text-[#FFFFFF] py-3 text-center'>
-      <p class='text-sm md:text-base font-medium px-4'>
+      <p class='text-sm md:text-base px-4'>
         Authentic Filipino Home-Cooked Meals, Made with Love
       </p>
     </div>
@@ -60,23 +60,55 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
         <!-- Mobile Navigation Links -->
         <nav class='flex flex-col space-y-6 px-8 pt-20 pb-8'>
           <a
-            href='#home'
-            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
+            href='/'
+            class='text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors mobile-menu-link'
             >Home</a
           >
+          <!-- Shop with Submenu (Mobile) -->
+          <div>
+            <button
+              class='mobile-shop-toggle text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors flex items-center justify-between w-full'
+            >
+              <span>Shop</span>
+              <svg
+                class='w-4 h-4 mobile-shop-arrow transition-transform'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M19 9l-7 7-7-7'></path>
+              </svg>
+            </button>
+            <div class='mobile-shop-submenu hidden pl-4 mt-3 space-y-3'>
+              <a
+                href='/cookies'
+                class='text-[#ab2a08] hover:text-[#F5A623] transition-colors block mobile-menu-link'
+                >Cookies</a
+              >
+              <a
+                href='/cinnamon'
+                class='text-[#ab2a08] hover:text-[#F5A623] transition-colors block mobile-menu-link'
+                >Cinnamon Rolls</a
+              >
+              <a
+                href='/cakes'
+                class='text-[#ab2a08] hover:text-[#F5A623] transition-colors block mobile-menu-link'
+                >Cakes</a
+              >
+            </div>
+          </div>
           <a
-            href='#menu'
-            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
-            >Menu</a
+            href='#our-story'
+            class='text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors mobile-menu-link smooth-scroll'
+            >Our Story</a
           >
           <a
-            href='#about'
-            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
-            >About</a
-          >
-          <a
-            href='#contact'
-            class='text-[#ab2a08] hover:text-[#F5A623] font-medium text-lg transition-colors mobile-menu-link'
+            href='/contact.html'
+            class='text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors mobile-menu-link'
             >Contact</a
           >
         </nav>
@@ -86,10 +118,10 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
     <!-- Navigation -->
     <nav
       id='main-nav'
-      class='bg-white shadow-md sticky top-0 z-50 transition-transform duration-300'
+      class='bg-[#F6F1ED] sticky top-0 z-50 transition-transform duration-300 pt-2'
     >
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
-        <div class='flex justify-between items-center md:flex-col md:space-y-4'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2'>
+        <div class='flex justify-between items-center md:flex-col'>
           <!-- Hamburger/Close Button (Mobile Only) -->
           <button
             id='hamburger-btn'
@@ -128,33 +160,69 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
 
           <!-- Logo -->
           <div class='flex items-center justify-center'>
-            <img
-              src='/logo.png'
-              alt='BayanBites Logo'
-              class='h-12 md:h-16 lg:h-20 w-auto'
-            />
+            <a href='/' aria-label='BayanBites Home'>
+              <img
+                src='/logo.png'
+                alt='BayanBites Logo'
+                class='h-20 md:h-24 lg:h-28 w-auto cursor-pointer hover:opacity-90 transition-opacity'
+              />
+            </a>
           </div>
 
           <!-- Desktop Navigation Links (Hidden on Mobile) -->
           <div class='hidden md:flex items-center space-x-8'>
             <a
-              href='#home'
-              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
+              href='/'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
               >Home</a
             >
+            <!-- Shop Dropdown (Desktop) -->
+            <div class='relative shop-dropdown group'>
+              <button
+                class='text-[#ab2a08] hover:text-[#F5A623] transition-colors flex items-center gap-1'
+              >
+                Shop
+                <svg
+                  class='w-4 h-4 transition-transform group-hover:rotate-180'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                    d='M19 9l-7 7-7-7'></path>
+                </svg>
+              </button>
+              <div
+                class='absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'
+              >
+                <a
+                  href='/cookies'
+                  class='block px-4 py-3 text-[#ab2a08] hover:bg-[#f5f1ed] hover:text-[#F5A623] transition-colors'
+                  >Cookies</a
+                >
+                <a
+                  href='/cinnamon'
+                  class='block px-4 py-3 text-[#ab2a08] hover:bg-[#f5f1ed] hover:text-[#F5A623] transition-colors'
+                  >Cinnamon Rolls</a
+                >
+                <a
+                  href='/cakes'
+                  class='block px-4 py-3 text-[#ab2a08] hover:bg-[#f5f1ed] hover:text-[#F5A623] transition-colors'
+                  >Cakes</a
+                >
+              </div>
+            </div>
             <a
-              href='#menu'
-              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
-              >Menu</a
+              href='#our-story'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors smooth-scroll'
+              >Our Story</a
             >
             <a
-              href='#about'
-              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
-              >About</a
-            >
-            <a
-              href='#contact'
-              class='text-[#ab2a08] hover:text-[#F5A623] font-medium transition-colors'
+              href='/contact.html'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
               >Contact</a
             >
           </div>
@@ -171,33 +239,27 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
     <!-- Why Choose Us Section -->
     <section class='py-20 bg-white'>
       <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h2 class='text-4xl font-bold text-center mb-12 text-[#ab2a08]'>
+        <h2 class='text-4xl text-center mb-12 text-[#ab2a08]'>
           Why Choose BayanBites?
         </h2>
         <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
           <div class='text-center p-6'>
             <div class='text-5xl mb-4'>🏠</div>
-            <h3 class='text-xl font-semibold mb-2 text-[#ab2a08]'>
-              Home-Cooked Goodness
-            </h3>
+            <h3 class='text-xl mb-2 text-[#ab2a08]'>Home-Cooked Goodness</h3>
             <p class='text-[#8B7355]'>
               Every dish is prepared with love, just like home.
             </p>
           </div>
           <div class='text-center p-6'>
             <div class='text-5xl mb-4'>🌾</div>
-            <h3 class='text-xl font-semibold mb-2 text-[#ab2a08]'>
-              Fresh Ingredients
-            </h3>
+            <h3 class='text-xl mb-2 text-[#ab2a08]'>Fresh Ingredients</h3>
             <p class='text-[#8B7355]'>
               We use only the freshest, locally-sourced ingredients.
             </p>
           </div>
           <div class='text-center p-6'>
             <div class='text-5xl mb-4'>❤️</div>
-            <h3 class='text-xl font-semibold mb-2 text-[#ab2a08]'>
-              Made with Love
-            </h3>
+            <h3 class='text-xl mb-2 text-[#ab2a08]'>Made with Love</h3>
             <p class='text-[#8B7355]'>
               Recipes passed down through generations.
             </p>
@@ -209,9 +271,7 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
     <!-- Menu Section -->
     <section id='menu' class='py-20 bg-[#f5f1ed]'>
       <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h2 class='text-4xl font-bold text-center mb-4 text-[#ab2a08]'>
-          Our Menu
-        </h2>
+        <h2 class='text-4xl text-center mb-4 text-[#ab2a08]'>Our Menu</h2>
         <p class='text-center text-[#8B7355] mb-12 text-lg'>
           Discover our delicious selection of Filipino favorites
         </p>
@@ -230,18 +290,39 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
       </div>
     </section>
 
+    <!-- Our Story Section -->
+    <section id='our-story' class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <h2 class='text-4xl text-center mb-8 text-[#ab2a08]'>Our Story</h2>
+        <div class='max-w-3xl mx-auto text-center'>
+          <p class='text-lg text-[#8B7355] mb-6'>
+            Bayan Bites began with a love of home baking and the joy of sharing food with others. "Bayan" means community, while "Bites" represents the small, meaningful moments we share around food—the little joys that connect us, one bite at a time.
+          </p>
+          <p class='text-lg text-[#8B7355] mb-6'>
+            Our kitchen offers freshly baked cookies, cakes, sweet pastries, and home-style Asian meals, all made with quality ingredients and thoughtful care. Each dish starts with curiosity—I create my own recipes and adapt others inspired by the cultures I love, personalising each one to share what brings me joy.
+          </p>
+          <p class='text-lg text-[#8B7355] mb-6'>
+            As a self-taught baker, connecting with others through food is what Bayan Bites is all about. We believe good food brings people together, whether for a celebration or a quiet moment after a long day.
+          </p>
+          <p class='text-lg text-[#8B7355]'>
+            We're grateful to be part of the Christchurch community and delighted to share our table with you.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class='bg-[#ab2a08] text-white py-12'>
       <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
           <div>
-            <h3 class='text-2xl font-bold mb-4'>BayanBites</h3>
+            <h3 class='text-2xl mb-4'>BayanBites</h3>
             <p class='text-[#f5f1ed]'>
               Bringing authentic Filipino flavors to your table.
             </p>
           </div>
           <div>
-            <h4 class='text-xl font-semibold mb-4'>Quick Links</h4>
+            <h4 class='text-xl mb-4'>Quick Links</h4>
             <ul class='space-y-2'>
               <li>
                 <a
@@ -274,7 +355,7 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
             </ul>
           </div>
           <div>
-            <h4 class='text-xl font-semibold mb-4'>Contact Us</h4>
+            <h4 class='text-xl mb-4'>Contact Us</h4>
             <p class='text-[#f5f1ed] mb-2'>Email: info@bayanbites.com</p>
             <p class='text-[#f5f1ed]'>Phone: (123) 456-7890</p>
           </div>
@@ -293,7 +374,10 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
         const nav = document.getElementById('main-nav')
         if (nav) {
           const navHeight = nav.offsetHeight
-          document.documentElement.style.setProperty('--nav-height', `${navHeight}px`)
+          document.documentElement.style.setProperty(
+            '--nav-height',
+            `${navHeight}px`,
+          )
         }
       }
 
@@ -339,6 +423,41 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
       // Close menu when clicking on a link
       mobileMenuLinks.forEach((link) => {
         link.addEventListener('click', closeMenu)
+      })
+
+      // Mobile Shop Submenu Toggle
+      const mobileShopToggle = document.querySelector('.mobile-shop-toggle')
+      const mobileShopSubmenu = document.querySelector('.mobile-shop-submenu')
+      const mobileShopArrow = document.querySelector('.mobile-shop-arrow')
+
+      mobileShopToggle?.addEventListener('click', () => {
+        if (mobileShopSubmenu.classList.contains('hidden')) {
+          mobileShopSubmenu.classList.remove('hidden')
+          mobileShopArrow.style.transform = 'rotate(180deg)'
+        } else {
+          mobileShopSubmenu.classList.add('hidden')
+          mobileShopArrow.style.transform = 'rotate(0deg)'
+        }
+      })
+
+      // Smooth Scrolling for anchor links
+      document.querySelectorAll('.smooth-scroll').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href')
+          if (href && href.startsWith('#')) {
+            e.preventDefault()
+            const targetId = href.substring(1)
+            const targetElement = document.getElementById(targetId)
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              })
+              // Close mobile menu if open
+              closeMenu()
+            }
+          }
+        })
       })
 
       // Hide navigation on scroll down, show on scroll up
