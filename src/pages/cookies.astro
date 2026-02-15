@@ -76,29 +76,192 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class='bg-white py-20'>
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
-        <h1 class='text-5xl md:text-6xl text-[#ab2a08] mb-6'>
-          Freshly Baked Cookies
-        </h1>
-        <p class='text-xl text-[#dc143c] max-w-3xl mx-auto mb-8'>
-          Thick, gooey, chunky cookies made from scratch with premium
-          ingredients. Each batch is baked fresh to order, bringing you the
-          perfect combination of crispy edges and soft, chewy centers.
-        </p>
+    <!-- Hero Image Section -->
+    <section class='relative h-96 md:h-[500px] overflow-hidden'>
+      <img
+        src='https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1600&h=800&fit=crop'
+        alt='Freshly baked New York style cookies'
+        class='w-full h-full object-cover'
+      />
+      <div
+        class='absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center'
+      >
+        <div class='text-center text-white px-4'>
+          <h1 class='text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg'>
+            New York Style Cookies
+          </h1>
+          <p class='text-xl md:text-2xl drop-shadow-lg'>
+            Thick, gooey, and absolutely irresistible
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Content Section -->
+    <!-- Cookie Selection Section -->
     <section class='py-20 bg-[#f5f1ed]'>
       <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div class='grid grid-cols-1 md:grid-cols-2 gap-12 mb-16'>
-          <div>
-            <h2 class='text-3xl text-[#ab2a08] mb-6'>
-              What Makes Our Cookies Special
-            </h2>
-            <div class='space-y-4 text-[#dc143c]'>
+        <h2 class='text-4xl text-center text-[#ab2a08] mb-4'>
+          Our Cookie Selection
+        </h2>
+        <p class='text-center text-[#dc143c] mb-12 max-w-2xl mx-auto'>
+          Each cookie is handcrafted with premium ingredients and baked fresh to
+          order. Choose your favorites!
+        </p>
+
+        <!-- Cookie Grid -->
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
+          <!-- Cookie 1: Classic Chocolate Chip -->
+          <div
+            class='bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow'
+          >
+            <img
+              src='https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&h=600&fit=crop'
+              alt='Classic Chocolate Chip Cookie'
+              class='h-64 w-full object-cover'
+            />
+            <div class='p-6'>
+              <h3 class='text-2xl text-[#ab2a08] mb-2'>
+                Classic Chocolate Chip
+              </h3>
+              <p class='text-[#dc143c] mb-4 text-sm'>
+                Our signature cookie loaded with premium dark and milk chocolate
+                chips. Crispy edges with a soft, gooey center.
+              </p>
+              <div class='flex items-center justify-between'>
+                <span class='text-xl font-semibold text-[#ab2a08]'>$3.50</span>
+                <span class='text-sm text-[#dc143c]'>per cookie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cookie 2: Double Chocolate -->
+          <div
+            class='bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow'
+          >
+            <img
+              src='https://images.unsplash.com/photo-1548365328-8c6db3220e4c?w=800&h=600&fit=crop'
+              alt='Double Chocolate Chunk Cookie'
+              class='h-64 w-full object-cover'
+            />
+            <div class='p-6'>
+              <h3 class='text-2xl text-[#ab2a08] mb-2'>
+                Double Chocolate Chunk
+              </h3>
+              <p class='text-[#dc143c] mb-4 text-sm'>
+                Rich cocoa dough studded with generous chunks of dark chocolate.
+                A chocolate lover's dream come true.
+              </p>
+              <div class='flex items-center justify-between'>
+                <span class='text-xl font-semibold text-[#ab2a08]'>$3.75</span>
+                <span class='text-sm text-[#dc143c]'>per cookie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cookie 3: White Chocolate Macadamia -->
+          <div
+            class='bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow'
+          >
+            <img
+              src='https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800&h=600&fit=crop&q=80'
+              alt='White Chocolate Macadamia Cookie'
+              class='h-64 w-full object-cover'
+            />
+            <div class='p-6'>
+              <h3 class='text-2xl text-[#ab2a08] mb-2'>
+                White Chocolate Macadamia
+              </h3>
+              <p class='text-[#dc143c] mb-4 text-sm'>
+                Buttery cookie with creamy white chocolate chips and crunchy
+                roasted macadamia nuts. Simply divine.
+              </p>
+              <div class='flex items-center justify-between'>
+                <span class='text-xl font-semibold text-[#ab2a08]'>$4.00</span>
+                <span class='text-sm text-[#dc143c]'>per cookie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cookie 4: Peanut Butter -->
+          <div
+            class='bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow'
+          >
+            <img
+              src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&h=600&fit=crop'
+              alt='Peanut Butter Cookie'
+              class='h-64 w-full object-cover'
+            />
+            <div class='p-6'>
+              <h3 class='text-2xl text-[#ab2a08] mb-2'>
+                Peanut Butter Delight
+              </h3>
+              <p class='text-[#dc143c] mb-4 text-sm'>
+                Thick and chewy with the perfect balance of sweet and salty.
+                Made with real peanut butter and a hint of sea salt.
+              </p>
+              <div class='flex items-center justify-between'>
+                <span class='text-xl font-semibold text-[#ab2a08]'>$3.50</span>
+                <span class='text-sm text-[#dc143c]'>per cookie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cookie 5: Oatmeal Raisin -->
+          <div
+            class='bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow'
+          >
+            <img
+              src='https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=800&h=600&fit=crop'
+              alt='Oatmeal Raisin Cookie'
+              class='h-64 w-full object-cover'
+            />
+            <div class='p-6'>
+              <h3 class='text-2xl text-[#ab2a08] mb-2'>
+                Oatmeal Raisin Classic
+              </h3>
+              <p class='text-[#dc143c] mb-4 text-sm'>
+                Wholesome oats, plump raisins, and warm cinnamon spice. A
+                comforting classic done right.
+              </p>
+              <div class='flex items-center justify-between'>
+                <span class='text-xl font-semibold text-[#ab2a08]'>$3.25</span>
+                <span class='text-sm text-[#dc143c]'>per cookie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cookie 6: Triple Chocolate Brownie -->
+          <div
+            class='bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow'
+          >
+            <img
+              src='https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&h=600&fit=crop'
+              alt='Triple Chocolate Brownie Cookie'
+              class='h-64 w-full object-cover'
+            />
+            <div class='p-6'>
+              <h3 class='text-2xl text-[#ab2a08] mb-2'>
+                Triple Chocolate Brownie
+              </h3>
+              <p class='text-[#dc143c] mb-4 text-sm'>
+                Fudgy brownie cookie with dark, milk, and white chocolate. Rich,
+                decadent, and utterly irresistible.
+              </p>
+              <div class='flex items-center justify-between'>
+                <span class='text-xl font-semibold text-[#ab2a08]'>$4.25</span>
+                <span class='text-sm text-[#dc143c]'>per cookie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What Makes Our Cookies Special -->
+        <div class='bg-white p-8 md:p-12 rounded-lg shadow-md'>
+          <h3 class='text-3xl text-center text-[#ab2a08] mb-8'>
+            What Makes Our Cookies Special
+          </h3>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+            <div class='space-y-6 text-[#dc143c]'>
               <p class='flex items-start'>
                 <span class='text-2xl mr-3'>🍪</span>
                 <span
@@ -113,6 +276,8 @@
                   real butter, and the finest ingredients available.</span
                 >
               </p>
+            </div>
+            <div class='space-y-6 text-[#dc143c]'>
               <p class='flex items-start'>
                 <span class='text-2xl mr-3'>❤️</span>
                 <span
@@ -129,44 +294,36 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class='bg-white p-8 rounded-lg shadow-md'>
-            <h3 class='text-2xl text-[#ab2a08] mb-6'>Cookie Varieties</h3>
-            <ul class='space-y-3 text-[#dc143c]'>
-              <li class='flex items-center'>
-                <span class='text-[#ab2a08] mr-2'>✓</span>
-                Classic Chocolate Chip
-              </li>
-              <li class='flex items-center'>
-                <span class='text-[#ab2a08] mr-2'>✓</span>
-                Double Chocolate Chunk
-              </li>
-              <li class='flex items-center'>
-                <span class='text-[#ab2a08] mr-2'>✓</span>
-                Oatmeal Raisin
-              </li>
-              <li class='flex items-center'>
-                <span class='text-[#ab2a08] mr-2'>✓</span>
-                Peanut Butter
-              </li>
-              <li class='flex items-center'>
-                <span class='text-[#ab2a08] mr-2'>✓</span>
-                White Chocolate Macadamia
-              </li>
-              <li class='flex items-center'>
-                <span class='text-[#ab2a08] mr-2'>✓</span>
-                Seasonal Specials
-              </li>
-            </ul>
-            <div class='mt-8 pt-6 border-t border-[#f5f1ed]'>
-              <p class='text-sm text-[#dc143c] italic'>
-                Check our menu for current availability and pricing
-              </p>
+    <!-- Ordering Info Section -->
+    <section class='py-16 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='bg-[#f5f1ed] p-8 rounded-lg'>
+          <h3 class='text-2xl text-[#ab2a08] mb-4'>Ordering Information</h3>
+          <div class='grid grid-cols-1 md:grid-cols-3 gap-6 text-[#dc143c]'>
+            <div>
+              <h4 class='font-semibold mb-2'>Minimum Order</h4>
+              <p class='text-sm'>6 cookies minimum for delivery orders</p>
+            </div>
+            <div>
+              <h4 class='font-semibold mb-2'>Bulk Pricing</h4>
+              <p class='text-sm'>Order 12+ cookies and save 10%</p>
+            </div>
+            <div>
+              <h4 class='font-semibold mb-2'>Lead Time</h4>
+              <p class='text-sm'>Orders require 24-48 hours notice</p>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Call to Action -->
+    <!-- Call to Action -->
+    <section class='py-16 bg-[#f5f1ed]'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div class='text-center bg-white p-12 rounded-lg shadow-md'>
           <h3 class='text-3xl text-[#ab2a08] mb-4'>Ready to Order?</h3>
           <p class='text-lg text-[#dc143c] mb-8 max-w-2xl mx-auto'>
@@ -177,7 +334,7 @@
             href='/'
             class='inline-block bg-[#ab2a08] text-white px-8 py-3 rounded-md hover:bg-[#8B0000] transition-colors text-lg'
           >
-            View Menu & Order
+            Contact Us to Order
           </a>
         </div>
       </div>
