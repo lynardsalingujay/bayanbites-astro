@@ -26,7 +26,7 @@ const cuisineName = cuisine?.data?.attributes?.name;
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
       ) : (
-        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-accent text-white font-bold text-2xl">
+        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6B4423] to-[#8B5A2B] text-white font-bold text-2xl">
           <span class="opacity-90">Bayan Bites</span>
         </div>
       )
@@ -36,12 +36,12 @@ const cuisineName = cuisine?.data?.attributes?.name;
       (isMadeToOrder || cuisineName) && (
         <div class="absolute top-4 right-4 flex flex-col gap-2 items-end">
           {isMadeToOrder && (
-            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-white text-primary shadow-lg border-2 border-primary">
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-white text-[#6B4423] shadow-lg border-2 border-[#6B4423]">
               Made to Order
             </span>
           )}
           {cuisineName && (
-            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FDF6EE] text-accent shadow-lg border-2 border-accent">
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FDF6EE] text-[#F5A623] shadow-lg border-2 border-[#F5A623]">
               {cuisineName}
             </span>
           )}
@@ -53,18 +53,18 @@ const cuisineName = cuisine?.data?.attributes?.name;
   <div class="p-6 flex-grow flex flex-col">
     <div class="flex justify-between items-start gap-4 mb-3">
       <h3
-        class="text-xl font-bold text-primary leading-tight m-0 group-hover:text-accent transition-colors"
+        class="text-xl font-bold text-[#6B4423] leading-tight m-0 group-hover:text-[#F5A623] transition-colors"
       >
         {name}
       </h3>
-      <span class="text-accent font-bold text-xl whitespace-nowrap"
+      <span class="text-[#F5A623] font-bold text-xl whitespace-nowrap"
         >${price.toFixed(2)}</span
       >
     </div>
 
     {
       description && (
-        <p class="text-secondary text-sm leading-relaxed m-0 line-clamp-3">
+        <p class="text-[#8B7355] text-sm leading-relaxed m-0 line-clamp-3">
           {description}
         </p>
       )
