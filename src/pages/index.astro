@@ -29,13 +29,18 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
     <meta name='generator' content={Astro.generator} />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <!-- <link
+      href='https://fonts.googleapis.com/css2?family=Baskervville:wght@400&display=swap'
+      rel='stylesheet'
+    /> -->
     <link
-      href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Allura&display=swap'
       rel='stylesheet'
     />
     <title>BayanBites - Authentic Filipino Home-Cooked Meals</title>
   </head>
-  <body class="font-['Playfair_Display'] bg-[#f5f1ed]">
+  <body class="font-['Quicksand'] bg-[#f5f1ed]">
+    <!-- To switch back to Baskervville: uncomment the Baskervville link above, comment the Quicksand link, and change font-['Quicksand'] to font-['Baskervville'] -->
     <!-- Top Announcement Banner -->
     <div class='bg-[#ab2a08] text-[#FFFFFF] py-3 text-center'>
       <p class='text-sm md:text-base px-4'>
@@ -236,85 +241,35 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
     <!-- Hero Section -->
     <Hero heroData={heroData} />
 
-    <!-- Why Choose Us Section -->
-    <section class='py-20 bg-white'>
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h2 class='text-4xl text-center mb-12 text-[#ab2a08]'>
-          Why Choose BayanBites?
-        </h2>
-        <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
-          <div class='text-center p-6'>
-            <div class='text-5xl mb-4'>🏠</div>
-            <h3 class='text-xl mb-2 text-[#ab2a08]'>Home-Cooked Goodness</h3>
-            <p class='text-[#8B7355]'>
-              Every dish is prepared with love, just like home.
-            </p>
-          </div>
-          <div class='text-center p-6'>
-            <div class='text-5xl mb-4'>🌾</div>
-            <h3 class='text-xl mb-2 text-[#ab2a08]'>Fresh Ingredients</h3>
-            <p class='text-[#8B7355]'>
-              We use only the freshest, locally-sourced ingredients.
-            </p>
-          </div>
-          <div class='text-center p-6'>
-            <div class='text-5xl mb-4'>❤️</div>
-            <h3 class='text-xl mb-2 text-[#ab2a08]'>Made with Love</h3>
-            <p class='text-[#8B7355]'>
-              Recipes passed down through generations.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id='menu' class='py-20 bg-[#f5f1ed]'>
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h2 class='text-4xl text-center mb-4 text-[#ab2a08]'>Our Menu</h2>
-        <p class='text-center text-[#8B7355] mb-12 text-lg'>
-          Discover our delicious selection of Filipino favorites
-        </p>
-
-        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {menu?.data?.map((item) => <SimpleMenuCard item={item} />)}
-        </div>
-
-        {
-          !menu?.data?.length && (
-            <p class='text-center text-[#8B7355]'>
-              No menu items available at the moment.
-            </p>
-          )
-        }
-      </div>
-    </section>
-
     <!-- Our Story Section -->
     <section id='our-story' class='py-20 bg-white'>
       <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h2 class='text-4xl text-center mb-8 text-[#ab2a08]'>Our Story</h2>
+        <h2
+          class="text-5xl text-center mb-8 text-[#ab2a08] font-['Allura'] tracking-[1.5]"
+        >
+          Our Story
+        </h2>
         <div class='max-w-3xl mx-auto text-center'>
-          <p class='text-lg text-[#8B7355] mb-6'>
+          <p class='text-lg text-[#dc143c] mb-6'>
             Bayan Bites began with a love of home baking and the joy of sharing
             food with others. "Bayan" means community, while "Bites" represents
             the small, meaningful moments we share around food—the little joys
             that connect us, one bite at a time.
           </p>
-          <p class='text-lg text-[#8B7355] mb-6'>
+          <p class='text-lg text-[#dc143c] mb-6'>
             Our kitchen offers freshly baked cookies, cakes, sweet pastries, and
             home-style Asian meals, all made with quality ingredients and
             thoughtful care. Each dish starts with curiosity—I create my own
             recipes and adapt others inspired by the cultures I love,
             personalising each one to share what brings me joy.
           </p>
-          <p class='text-lg text-[#8B7355] mb-6'>
+          <p class='text-lg text-[#dc143c] mb-6'>
             As a self-taught baker, connecting with others through food is what
             Bayan Bites is all about. We believe good food brings people
             together, whether for a celebration or a quiet moment after a long
             day.
           </p>
-          <p class='text-lg text-[#8B7355]'>
+          <p class='text-lg text-[#dc143c]'>
             We're grateful to be part of the Christchurch community and
             delighted to share our table with you.
           </p>
@@ -371,7 +326,7 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
             <p class='text-[#f5f1ed]'>Phone: (123) 456-7890</p>
           </div>
         </div>
-        <div class='mt-8 pt-8 border-t border-[#8B7355] text-center'>
+        <div class='mt-8 pt-8 border-t border-[#dc143c] text-center'>
           <p class='text-[#f5f1ed]'>
             &copy; 2026 BayanBites. All rights reserved.
           </p>

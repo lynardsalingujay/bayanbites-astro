@@ -1,99 +1,65 @@
 ---
-import { downloadStrapiImage, type HeroSection } from "../lib/strapi";
+import { downloadStrapiImage, type HeroSection } from '../lib/strapi'
 
 interface Props {
-  heroData: HeroSection | null;
+  heroData: HeroSection | null
 }
 
-const { heroData } = Astro.props;
+const { heroData } = Astro.props
 
 // Debug: Check what data we received
 if (import.meta.env.DEV) {
   console.log(
-    "Hero component received heroData:",
-    JSON.stringify(heroData, null, 2)
-  );
+    'Hero component received heroData:',
+    JSON.stringify(heroData, null, 2),
+  )
 }
 
 // Use Strapi data if available, otherwise use fallback defaults
-const heroTitle = heroData?.heroTitle || "Authentic flavors,Made with love.";
+const heroTitle = heroData?.heroTitle || 'Authentic flavors,Made with love.'
 const heroSubtitle =
   heroData?.heroSubtitle ||
-  "Experience the warmth of home-cooked meals. We bring traditional Filipino recipes to your table with a modern twist.";
-const heroImage = heroData?.heroImage;
-const primaryCtaText = heroData?.primaryCtaText || "View Menu";
-const primaryCtaLink = heroData?.primaryCtaLink || "#menu";
-const secondaryCtaText = heroData?.secondaryCtaText || "Order Now";
-const secondaryCtaLink = heroData?.secondaryCtaLink || "#contact";
+  'Experience the warmth of home-cooked meals. We bring traditional Filipino recipes to your table with a modern twist.'
+const heroImage = heroData?.heroImage
+const primaryCtaText = heroData?.primaryCtaText || 'View Menu'
+const primaryCtaLink = heroData?.primaryCtaLink || '#menu'
+const secondaryCtaText = heroData?.secondaryCtaText || 'Order Now'
+const secondaryCtaLink = heroData?.secondaryCtaLink || '#contact'
 
 // Download image at build time and get local path
-const imageUrl = await downloadStrapiImage(heroImage?.data?.attributes?.url);
-const imageAlt = heroImage?.data?.attributes?.alternativeText || heroTitle;
+const imageUrl = await downloadStrapiImage(heroImage?.data?.attributes?.url)
+const imageAlt = heroImage?.data?.attributes?.alternativeText || heroTitle
 ---
 
-<section class="relative bg-[#f5f1ed] py-20 sm:py-32">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="text-left">
+<section class='relative bg-[#f5f1ed] py-14 sm:py-24'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative'>
+      <!-- Text Card with Mustard Yellow Background -->
+      <div class='bg-[#ffd700] p-8 lg:p-12 shadow-xl relative z-10'>
         <h1
-          class="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight"
+          class='text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight'
         >
-          <span class="text-[#6B4423]">{heroTitle.split(",")[0]},</span>
+          <span class='text-[#6B4423]'>{heroTitle.split(',')[0]},</span>
           <br />
-          <span class="text-[#F5A623]">
-            {heroTitle.split(",")[1] || "Made with love."}
-          </span>
+          {
+            heroTitle.split(',')[1] && (
+              <span class='text-[#F5A623]'>{heroTitle.split(',')[1]}</span>
+            )
+          }
         </h1>
 
-        <p class="text-xl text-[#8B7355] mb-8 leading-relaxed">
+        <p class='text-xl text-[#dc143c] leading-relaxed'>
           {heroSubtitle}
         </p>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          {
-            primaryCtaText && primaryCtaLink && (
-              <a
-                href={primaryCtaLink}
-                class="bg-[#6B4423] hover:bg-[#8B5A2B] text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center gap-2"
-              >
-                {primaryCtaText}
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            )
-          }
-
-          {
-            secondaryCtaText && secondaryCtaLink && (
-              <a
-                href={secondaryCtaLink}
-                class="bg-white hover:bg-gray-50 text-[#6B4423] px-8 py-4 rounded-full font-semibold text-lg border-2 border-[#6B4423] transition-colors inline-block"
-              >
-                {secondaryCtaText}
-              </a>
-            )
-          }
-        </div>
       </div>
 
       {
         imageUrl && (
-          <div class="relative">
+          <div class='relative lg:-ml-20 z-20'>
             <img
               src={imageUrl}
               alt={imageAlt}
-              class="w-full h-auto rounded-2xl shadow-2xl"
+              class='w-full h-auto shadow-2xl'
             />
           </div>
         )
