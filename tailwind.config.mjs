@@ -4,18 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-        },
+        primary: '#F2B301',      // Main brand color (gold/yellow)
+        secondary: '#8B7355',    // Body text color (tan)
+        accent: '#F5A623',       // Hover/accent color (gold)
+        background: '#f5f1ed',   // Page background (beige)
+        'nav-bg': '#F6F1ED',     // Navigation background
       },
     },
   },
