@@ -35,18 +35,20 @@ export interface StrapiImageData {
 }
 
 export interface StrapiImage {
-  data: StrapiImageData | null;
+  data: StrapiImageData[] | StrapiImageData | null;
 }
 
-export interface CuisineData {
+export interface MenuCategoryData {
   id: number;
   attributes: {
-    name: string;
+    categoryName: string;
+    description?: string;
+    sortOrder?: number;
   };
 }
 
-export interface CuisineRelation {
-  data: CuisineData | null;
+export interface MenuCategoryRelation {
+  data: MenuCategoryData | null;
 }
 
 export interface MenuItemAttributes {
@@ -55,7 +57,7 @@ export interface MenuItemAttributes {
   price: number;
   isMadeToOrder: boolean;
   image: StrapiImage;
-  cuisine: CuisineRelation;
+  menu_category: MenuCategoryRelation;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -105,7 +107,7 @@ export interface HomepageResponse {
 }
 
 export async function fetchStrapi<T = MenuItem>(endpoint: string): Promise<StrapiResponse<T>> {
-  const url = `${STRAPI_URL}/api/${endpoint}?populate[image][fields][0]=url&populate[image][fields][1]=alternativeText&populate[image][fields][2]=formats&populate[cuisine][fields][0]=name`;
+  const url = `${STRAPI_URL}/api/${endpoint}?populate[image][fields][0]=url&populate[image][fields][1]=alternativeText&populate[image][fields][2]=formats&populate[menu_category][fields][0]=categoryName`;
   
   try {
     const headers: HeadersInit = {

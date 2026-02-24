@@ -1,0 +1,174 @@
+---
+// Asian Bites page - displays menu items with "Asian Bites" cuisine
+import { fetchStrapi, type MenuItem } from '../lib/strapi'
+import SimpleMenuCard from '../components/SimpleMenuCard.astro'
+
+// Fetch all menu items at build time
+const menu = await fetchStrapi<MenuItem>('menu-items')
+
+// Filter for Asian Bites menu category items
+const asianBitesItems = menu.data.filter(
+  (item) =>
+    item.attributes.menu_category?.data?.attributes?.categoryName ===
+    'Asian Bites',
+)
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='description'
+      content='Authentic Asian home-cooked meals from BayanBites'
+    />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/bb_icon2.png' />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Allura&display=swap'
+      rel='stylesheet'
+    />
+    <title>Asian Bites - BayanBites</title>
+  </head>
+  <body class="font-['Quicksand'] bg-[#f5f1ed]">
+    <!-- Top Announcement Banner -->
+    <div class='bg-[#ab2a08] text-[#FFFFFF] py-3 text-center'>
+      <p class='text-sm md:text-base px-4'>Authentic Asian Home-Cooked Meals</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class='bg-[#F6F1ED] sticky top-0 z-50 pt-2'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2'>
+        <div class='flex flex-col items-center space-y-4'>
+          <!-- Logo -->
+          <div class='flex items-center justify-center'>
+            <a href='/' aria-label='BayanBites Home'>
+              <img
+                src='/logo.png'
+                alt='BayanBites Logo'
+                class='h-16 md:h-20 lg:h-24 w-auto cursor-pointer hover:opacity-90 transition-opacity'
+              />
+            </a>
+          </div>
+
+          <!-- Navigation Links -->
+          <div class='flex items-center space-x-6'>
+            <a
+              href='/'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+              >Home</a
+            >
+            <a
+              href='/cookies'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+              >Cookies</a
+            >
+            <a
+              href='/cinnamon'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+              >Cinnamon Rolls</a
+            >
+            <a
+              href='/cakes'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+              >Cakes</a
+            >
+            <a
+              href='/asian-bites'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors font-semibold'
+              >Asian Bites</a
+            >
+            <a
+              href='/contact.html'
+              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
+      <h1
+        class="text-5xl text-center mb-8 text-[#ab2a08] font-['Allura'] tracking-[1.5]"
+      >
+        Asian Bites
+      </h1>
+
+      <div class='max-w-3xl mx-auto text-center mb-12'>
+        <p class='text-lg text-[#dc143c] mb-6'>
+          Experience the authentic flavors of home-cooked Asian meals,
+          thoughtfully prepared with quality ingredients and care.
+        </p>
+        <p class='text-lg text-[#dc143c]'>
+          From Filipino comfort food to other Asian favorites, each dish is made
+          to order and brings the warmth of home cooking to your table.
+        </p>
+      </div>
+
+      <!-- Menu Items Grid -->
+      {
+        asianBitesItems.length > 0 ? (
+          <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12'>
+            {asianBitesItems.map((item) => (
+              <SimpleMenuCard item={item} />
+            ))}
+          </div>
+        ) : (
+          <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12'>
+            <div class='bg-white rounded-lg shadow-lg overflow-hidden'>
+              <div class='aspect-square bg-gray-200 flex items-center justify-center'>
+                <p class='text-gray-400'>Coming Soon</p>
+              </div>
+              <div class='p-6'>
+                <h3 class='text-2xl font-semibold text-[#ab2a08] mb-2'>
+                  Menu Items Coming Soon
+                </h3>
+                <p class='text-[#dc143c]'>
+                  Check back soon for our delicious Asian meal offerings!
+                </p>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    </main>
+
+    <!-- Footer -->
+    <footer class='bg-[#ab2a08] text-white py-12 mt-20'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+          <div>
+            <h3 class='text-2xl mb-4'>BayanBites</h3>
+            <p class='text-[#f5f1ed]'>Where every bite brings us together</p>
+          </div>
+          <div>
+            <h4 class='text-xl mb-4'>Contact Us</h4>
+            <p class='text-[#f5f1ed] mb-2'>Phone: 020 4054 8889</p>
+            <a
+              href='https://www.facebook.com/profile.php?id=61581222617160'
+              target='_blank'
+              rel='noopener noreferrer'
+              class='text-[#f5f1ed] hover:text-[#F5A623] transition-colors inline-flex items-center gap-2'
+            >
+              <svg class='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
+                <path
+                  d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'
+                ></path>
+              </svg>
+              Visit us on Facebook
+            </a>
+          </div>
+        </div>
+        <div class='mt-8 pt-8 border-t border-[#dc143c] text-center'>
+          <p class='text-[#f5f1ed]'>
+            &copy; 2026 BayanBites. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

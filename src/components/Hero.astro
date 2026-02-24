@@ -27,8 +27,12 @@ const secondaryCtaText = heroData?.secondaryCtaText || 'Order Now'
 const secondaryCtaLink = heroData?.secondaryCtaLink || '#contact'
 
 // Download image at build time and get local path
-const imageUrl = await downloadStrapiImage(heroImage?.data?.attributes?.url)
-const imageAlt = heroImage?.data?.attributes?.alternativeText || heroTitle
+// Handle both single media and multiple media (array)
+const imageData = Array.isArray(heroImage?.data)
+  ? heroImage?.data[0]
+  : heroImage?.data
+const imageUrl = await downloadStrapiImage(imageData?.attributes?.url)
+const imageAlt = imageData?.attributes?.alternativeText || heroTitle
 ---
 
 <section class='relative bg-[#f5f1ed] py-14 sm:py-24'>

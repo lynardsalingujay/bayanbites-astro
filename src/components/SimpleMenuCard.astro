@@ -6,12 +6,14 @@ interface Props {
 }
 
 const { item } = Astro.props
-const { name, description, price, isMadeToOrder, image, cuisine } =
+const { name, description, price, isMadeToOrder, image, menu_category } =
   item.attributes
 
 // Download image at build time and get local path
-const imageUrl = await downloadStrapiImage(image?.data?.attributes?.url)
-const cuisineName = cuisine?.data?.attributes?.name
+// Handle both single media and multiple media (array)
+const imageData = Array.isArray(image?.data) ? image?.data[0] : image?.data
+const imageUrl = await downloadStrapiImage(imageData?.attributes?.url)
+const categoryName = menu_category?.data?.attributes?.categoryName
 ---
 
 <div
@@ -33,16 +35,16 @@ const cuisineName = cuisine?.data?.attributes?.name
     }
 
     {
-      (isMadeToOrder || cuisineName) && (
+      (isMadeToOrder || categoryName) && (
         <div class='absolute top-4 right-4 flex flex-col gap-2 items-end'>
           {isMadeToOrder && (
             <span class='px-3 py-1.5 rounded-full text-xs font-bold bg-white text-[#6B4423] shadow-lg border-2 border-[#6B4423]'>
               Made to Order
             </span>
           )}
-          {cuisineName && (
+          {categoryName && (
             <span class='px-3 py-1.5 rounded-full text-xs font-bold bg-[#FDF6EE] text-[#F5A623] shadow-lg border-2 border-[#F5A623]'>
-              {cuisineName}
+              {categoryName}
             </span>
           )}
         </div>
