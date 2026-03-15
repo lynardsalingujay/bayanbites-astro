@@ -24,7 +24,7 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
   <head>
     <meta charset='UTF-8' />
     <meta name='description' content='Authentic Filipino home-cooked meals' />
-    <meta name='viewport' content='width=device-width' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
     <!-- <link rel='icon' type='image/svg+xml' href='/favicon.svg' /> -->
     <link rel='icon' type='image/svg+xml' href='/bb_icon2.png' />
     <meta name='generator' content={Astro.generator} />
@@ -108,44 +108,96 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
                 class='text-[#ab2a08] hover:text-[#F5A623] transition-colors block mobile-menu-link'
                 >Cakes</a
               >
-              <a
-                href='/asian-bites'
-                class='text-[#ab2a08] hover:text-[#F5A623] transition-colors block mobile-menu-link'
-                >Asian Bites</a
-              >
-            </div>
-          </div> -->
+              -->
           <a
-            href='#our-story'
-            class='text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors mobile-menu-link smooth-scroll'
-            >Our Story</a
-          >
-          <a
-            href='/contact.html'
-            class='text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors mobile-menu-link'
-            >Contact</a
+            href='/asian-bites'
+            class='text-[#ab2a08] hover:text-[#F5A623] transition-colors block mobile-menu-link'
+            >Asian Bites</a
           >
         </nav>
-      </div>
+      </div> -->
+      <a
+        href='#our-story'
+        class='text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors mobile-menu-link smooth-scroll'
+        >Our Story</a
+      >
+      <a
+        href='/contact.html'
+        class='text-[#ab2a08] hover:text-[#F5A623] text-lg transition-colors mobile-menu-link'
+        >Contact</a
+      >
     </div>
+  </body>
+</html>
 
-    <!-- Navigation -->
-    <nav
-      id='main-nav'
-      class='bg-[#F6F1ED] sticky top-0 z-50 transition-transform duration-300 pt-2'
-    >
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2'>
-        <div class='flex justify-between items-center md:flex-col'>
-          <!-- Hamburger/Close Button (Mobile Only) -->
+<!-- Navigation -->
+<nav
+  id='main-nav'
+  class='bg-[#F6F1ED] sticky top-0 z-50 transition-transform duration-300 pt-2'
+>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2'>
+    <div class='flex justify-between items-center lg:flex-col'>
+      <!-- Hamburger/Close Button (Mobile & Tablet) -->
+      <button
+        id='hamburger-btn'
+        class='lg:hidden text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+        aria-label='Toggle menu'
+      >
+        <!-- Hamburger Icon -->
+        <svg
+          id='hamburger-icon'
+          class='w-6 h-6'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M4 6h16M4 12h16M4 18h16'></path>
+        </svg>
+        <!-- Close Icon (Hidden by default) -->
+        <svg
+          id='close-icon'
+          class='w-6 h-6 hidden'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M6 18L18 6M6 6l12 12'></path>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class='flex items-center justify-center'>
+        <a href='/' aria-label='BayanBites Home'>
+          <img
+            src='/logo.png'
+            alt='BayanBites Logo'
+            class='h-40 md:h-44 lg:h-52 w-auto cursor-pointer hover:opacity-90 transition-opacity'
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Links (Hidden on Mobile & Tablet) -->
+      <div class='hidden lg:flex items-center space-x-12'>
+        <a
+          href='/'
+          class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'>Home</a
+        >
+        <!-- Menu Dropdown (Desktop) - HIDDEN FOR NOW -->
+        <div class='relative shop-dropdown group'>
           <button
-            id='hamburger-btn'
-            class='md:hidden text-[#ab2a08] hover:text-[#F5A623] transition-colors'
-            aria-label='Toggle menu'
+            class='text-[#ab2a08] hover:text-[#F5A623] transition-colors flex items-center gap-1'
           >
-            <!-- Hamburger Icon -->
+            Menu
             <svg
-              id='hamburger-icon'
-              class='w-6 h-6'
+              class='w-4 h-4 transition-transform group-hover:rotate-180'
               fill='none'
               stroke='currentColor'
               viewBox='0 0 24 24'
@@ -154,64 +206,13 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
                 stroke-linecap='round'
                 stroke-linejoin='round'
                 stroke-width='2'
-                d='M4 6h16M4 12h16M4 18h16'></path>
-            </svg>
-            <!-- Close Icon (Hidden by default) -->
-            <svg
-              id='close-icon'
-              class='w-6 h-6 hidden'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
-                d='M6 18L18 6M6 6l12 12'></path>
+                d='M19 9l-7 7-7-7'></path>
             </svg>
           </button>
-
-          <!-- Logo -->
-          <div class='flex items-center justify-center'>
-            <a href='/' aria-label='BayanBites Home'>
-              <img
-                src='/logo.png'
-                alt='BayanBites Logo'
-                class='h-40 md:h-44 lg:h-52 w-auto cursor-pointer hover:opacity-90 transition-opacity'
-              />
-            </a>
-          </div>
-
-          <!-- Desktop Navigation Links (Hidden on Mobile) -->
-          <div class='hidden md:flex items-center space-x-12'>
-            <a
-              href='/'
-              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
-              >Home</a
-            >
-            <!-- Menu Dropdown (Desktop) - HIDDEN FOR NOW -->
-            <div class='relative shop-dropdown group'>
-              <button
-                class='text-[#ab2a08] hover:text-[#F5A623] transition-colors flex items-center gap-1'
-              >
-                Menu
-                <svg
-                  class='w-4 h-4 transition-transform group-hover:rotate-180'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='M19 9l-7 7-7-7'></path>
-                </svg>
-              </button>
-              <div
-                class='absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'
-              >
+          <div
+            class='absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'
+          >
+            <!--
                 <a
                   href='/cookies'
                   class='block px-4 py-3 text-[#ab2a08] hover:bg-[#f5f1ed] hover:text-[#F5A623] transition-colors'
@@ -227,224 +228,219 @@ const heroData = Array.isArray(heroSection) ? heroSection[0] : heroSection
                   class='block px-4 py-3 text-[#ab2a08] hover:text-[#F5A623] transition-colors'
                   >Cakes</a
                 >
-                <a
-                  href='/asian-bites'
-                  class='block px-4 py-3 text-[#ab2a08] hover:bg-[#f5f1ed] hover:text-[#F5A623] transition-colors'
-                  >Asian Bites</a
-                >
-              </div>
-            </div>
+                -->
             <a
-              href='#our-story'
-              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors smooth-scroll'
-              >Our Story</a
-            >
-            <a
-              href='/contact.html'
-              class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
-              >Contact</a
+              href='/asian-bites'
+              class='block px-4 py-3 text-[#ab2a08] hover:bg-[#f5f1ed] hover:text-[#F5A623] transition-colors'
+              >Asian Bites</a
             >
           </div>
-
-          <!-- Spacer for mobile to center logo -->
-          <div class='md:hidden w-6'></div>
         </div>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <Hero heroData={heroData} />
-
-    <!-- Our Story Section -->
-    <section id='our-story' class='py-20 bg-white'>
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h2
-          class="text-5xl text-center mb-8 text-[#ab2a08] font-['Allura'] tracking-[1.5]"
+        <a
+          href='#our-story'
+          class='text-[#ab2a08] hover:text-[#F5A623] transition-colors smooth-scroll'
+          >Our Story</a
         >
-          Our Story
-        </h2>
-        <div class='max-w-3xl mx-auto text-center'>
-          <p class='text-lg text-[#dc143c] mb-6'>
-            Bayan Bites began with a love of home baking and the joy of sharing
-            food with others. "Bayan" means community, while "Bites" represents
-            the small, meaningful moments we share around food—the little joys
-            that connect us, one bite at a time.
-          </p>
-          <p class='text-lg text-[#dc143c] mb-6'>
-            Our kitchen offers freshly baked cookies, cakes, sweet pastries, and
-            home-style Asian meals, all made with quality ingredients and
-            thoughtful care. Each dish starts with curiosity—I create my own
-            recipes and adapt others inspired by the cultures I love,
-            personalising each one to share what brings me joy.
-          </p>
-          <p class='text-lg text-[#dc143c] mb-6'>
-            As a self-taught baker, connecting with others through food is what
-            Bayan Bites is all about. We believe good food brings people
-            together, whether for a celebration or a quiet moment after a long
-            day.
-          </p>
-          <p class='text-lg text-[#dc143c]'>
-            We're grateful to be part of the Christchurch community and
-            delighted to share our table with you.
-          </p>
-        </div>
+        <a
+          href='/contact.html'
+          class='text-[#ab2a08] hover:text-[#F5A623] transition-colors'
+          >Contact</a
+        >
       </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class='bg-[#ab2a08] text-white py-12'>
-      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
-          <div>
-            <h3 class='text-2xl mb-4'>BayanBites</h3>
-            <p class='text-[#f5f1ed]'>
-              Bayan Bites Where every bite brings us together
-            </p>
-          </div>
-          <div>
-            <h4 class='text-xl mb-4'>Contact Us</h4>
-            <!-- <p class='text-[#f5f1ed] mb-2'>Email: info@bayanbites.co.nz</p> -->
-            <p class='text-[#f5f1ed] mb-2'>Phone: 020 4054 8889</p>
-            <a
-              href='https://www.facebook.com/profile.php?id=61581222617160'
-              target='_blank'
-              rel='noopener noreferrer'
-              class='text-[#f5f1ed] hover:text-[#F5A623] transition-colors inline-flex items-center gap-2'
-            >
-              <svg class='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
-                <path
-                  d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'
-                ></path>
-              </svg>
-              Visit us on Facebook
-            </a>
-          </div>
-        </div>
-        <div class='mt-8 pt-8 border-t border-[#dc143c] text-center'>
-          <p class='text-[#f5f1ed]'>
-            &copy; 2026 BayanBites. All rights reserved.
-          </p>
-        </div>
+      <!-- Spacer for mobile/tablet to center logo -->
+      <div class='lg:hidden w-6'></div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<Hero heroData={heroData} />
+
+<!-- Our Story Section -->
+<section id='our-story' class='py-20 bg-white'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <h2
+      class="text-5xl text-center mb-8 text-[#ab2a08] font-['Allura'] tracking-[1.5]"
+    >
+      Our Story
+    </h2>
+    <div class='max-w-3xl mx-auto text-center'>
+      <p class='text-lg text-[#dc143c] mb-6'>
+        Bayan Bites began with a love of home baking and the joy of sharing food
+        with others. "Bayan" means community, while "Bites" represents the
+        small, meaningful moments we share around food—the little joys that
+        connect us, one bite at a time.
+      </p>
+      <p class='text-lg text-[#dc143c] mb-6'>
+        Our kitchen offers freshly baked cookies, cakes, sweet pastries, and
+        home-style Asian meals, all made with quality ingredients and thoughtful
+        care. Each dish starts with curiosity—I create my own recipes and adapt
+        others inspired by the cultures I love, personalising each one to share
+        what brings me joy.
+      </p>
+      <p class='text-lg text-[#dc143c] mb-6'>
+        As a self-taught baker, connecting with others through food is what
+        Bayan Bites is all about. We believe good food brings people together,
+        whether for a celebration or a quiet moment after a long day.
+      </p>
+      <p class='text-lg text-[#dc143c]'>
+        We're grateful to be part of the Christchurch community and delighted to
+        share our table with you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class='bg-[#ab2a08] text-white py-12'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <div>
+        <h3 class='text-2xl mb-4'>BayanBites</h3>
+        <p class='text-[#f5f1ed]'>
+          Bayan Bites Where every bite brings us together
+        </p>
       </div>
-    </footer>
+      <div>
+        <h4 class='text-xl mb-4'>Contact Us</h4>
+        <!-- <p class='text-[#f5f1ed] mb-2'>Email: info@bayanbites.co.nz</p> -->
+        <p class='text-[#f5f1ed] mb-2'>Phone: 020 4054 8889</p>
+        <a
+          href='https://www.facebook.com/profile.php?id=61581222617160'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='text-[#f5f1ed] hover:text-[#F5A623] transition-colors inline-flex items-center gap-2'
+        >
+          <svg class='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
+            <path
+              d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'
+            ></path>
+          </svg>
+          Visit us on Facebook
+        </a>
+      </div>
+    </div>
+    <div class='mt-8 pt-8 border-t border-[#dc143c] text-center'>
+      <p class='text-[#f5f1ed]'>&copy; 2026 BayanBites. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
-    <script>
-      // Set navbar height for mobile menu positioning
-      function updateNavHeight() {
-        const nav = document.getElementById('main-nav')
-        if (nav) {
-          const navHeight = nav.offsetHeight
-          document.documentElement.style.setProperty(
-            '--nav-height',
-            `${navHeight}px`,
-          )
-        }
-      }
+<script>
+  // Set navbar height for mobile menu positioning
+  function updateNavHeight() {
+    const nav = document.getElementById('main-nav')
+    if (nav) {
+      const navHeight = nav.offsetHeight
+      document.documentElement.style.setProperty(
+        '--nav-height',
+        `${navHeight}px`,
+      )
+    }
+  }
 
-      // Update on load and resize
-      updateNavHeight()
-      window.addEventListener('resize', updateNavHeight)
+  // Update on load and resize
+  updateNavHeight()
+  window.addEventListener('resize', updateNavHeight)
 
-      // Mobile menu toggle functionality
-      const hamburgerBtn = document.getElementById('hamburger-btn')
-      const hamburgerIcon = document.getElementById('hamburger-icon')
-      const closeIcon = document.getElementById('close-icon')
-      const mobileMenu = document.getElementById('mobile-menu')
-      const mobileOverlay = document.getElementById('mobile-overlay')
-      const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link')
+  // Mobile menu toggle functionality
+  const hamburgerBtn = document.getElementById('hamburger-btn')
+  const hamburgerIcon = document.getElementById('hamburger-icon')
+  const closeIcon = document.getElementById('close-icon')
+  const mobileMenu = document.getElementById('mobile-menu')
+  const mobileOverlay = document.getElementById('mobile-overlay')
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link')
 
-      function openMenu() {
-        mobileMenu.classList.remove('-translate-x-full')
-        mobileOverlay.classList.remove('hidden')
-        hamburgerIcon.classList.add('hidden')
-        closeIcon.classList.remove('hidden')
-        document.body.style.overflow = 'hidden'
-      }
+  function openMenu() {
+    mobileMenu.classList.remove('-translate-x-full')
+    mobileOverlay.classList.remove('hidden')
+    hamburgerIcon.classList.add('hidden')
+    closeIcon.classList.remove('hidden')
+    document.body.style.overflow = 'hidden'
+  }
 
-      function closeMenu() {
-        mobileMenu.classList.add('-translate-x-full')
-        mobileOverlay.classList.add('hidden')
-        hamburgerIcon.classList.remove('hidden')
-        closeIcon.classList.add('hidden')
-        document.body.style.overflow = ''
-      }
+  function closeMenu() {
+    mobileMenu.classList.add('-translate-x-full')
+    mobileOverlay.classList.add('hidden')
+    hamburgerIcon.classList.remove('hidden')
+    closeIcon.classList.add('hidden')
+    document.body.style.overflow = ''
+  }
 
-      hamburgerBtn?.addEventListener('click', () => {
-        if (mobileMenu.classList.contains('-translate-x-full')) {
-          openMenu()
-        } else {
+  hamburgerBtn?.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('-translate-x-full')) {
+      openMenu()
+    } else {
+      closeMenu()
+    }
+  })
+
+  // Close menu when clicking on overlay
+  mobileOverlay?.addEventListener('click', closeMenu)
+
+  // Close menu when clicking on a link
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener('click', closeMenu)
+  })
+
+  // Mobile Shop Submenu Toggle
+  const mobileShopToggle = document.querySelector('.mobile-shop-toggle')
+  const mobileShopSubmenu = document.querySelector('.mobile-shop-submenu')
+  const mobileShopArrow = document.querySelector('.mobile-shop-arrow')
+
+  mobileShopToggle?.addEventListener('click', () => {
+    if (mobileShopSubmenu.classList.contains('hidden')) {
+      mobileShopSubmenu.classList.remove('hidden')
+      mobileShopArrow.style.transform = 'rotate(180deg)'
+    } else {
+      mobileShopSubmenu.classList.add('hidden')
+      mobileShopArrow.style.transform = 'rotate(0deg)'
+    }
+  })
+
+  // Smooth Scrolling for anchor links
+  document.querySelectorAll('.smooth-scroll').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href')
+      if (href && href.startsWith('#')) {
+        e.preventDefault()
+        const targetId = href.substring(1)
+        const targetElement = document.getElementById(targetId)
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+          // Close mobile menu if open
           closeMenu()
         }
-      })
+      }
+    })
+  })
 
-      // Close menu when clicking on overlay
-      mobileOverlay?.addEventListener('click', closeMenu)
+  // Hide navigation on scroll down, show on scroll up
+  let lastScrollTop = 0
+  const nav = document.getElementById('main-nav')
+  const scrollThreshold = 100 // Start hiding after scrolling 100px
 
-      // Close menu when clicking on a link
-      mobileMenuLinks.forEach((link) => {
-        link.addEventListener('click', closeMenu)
-      })
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
 
-      // Mobile Shop Submenu Toggle
-      const mobileShopToggle = document.querySelector('.mobile-shop-toggle')
-      const mobileShopSubmenu = document.querySelector('.mobile-shop-submenu')
-      const mobileShopArrow = document.querySelector('.mobile-shop-arrow')
+    // Only apply hide/show behavior after scrolling past threshold
+    if (scrollTop > scrollThreshold) {
+      if (scrollTop > lastScrollTop) {
+        // Scrolling down - hide nav
+        nav.style.transform = 'translateY(-100%)'
+      } else {
+        // Scrolling up - show nav
+        nav.style.transform = 'translateY(0)'
+      }
+    } else {
+      // At top of page - always show nav
+      nav.style.transform = 'translateY(0)'
+    }
 
-      mobileShopToggle?.addEventListener('click', () => {
-        if (mobileShopSubmenu.classList.contains('hidden')) {
-          mobileShopSubmenu.classList.remove('hidden')
-          mobileShopArrow.style.transform = 'rotate(180deg)'
-        } else {
-          mobileShopSubmenu.classList.add('hidden')
-          mobileShopArrow.style.transform = 'rotate(0deg)'
-        }
-      })
-
-      // Smooth Scrolling for anchor links
-      document.querySelectorAll('.smooth-scroll').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-          const href = this.getAttribute('href')
-          if (href && href.startsWith('#')) {
-            e.preventDefault()
-            const targetId = href.substring(1)
-            const targetElement = document.getElementById(targetId)
-            if (targetElement) {
-              targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-              })
-              // Close mobile menu if open
-              closeMenu()
-            }
-          }
-        })
-      })
-
-      // Hide navigation on scroll down, show on scroll up
-      let lastScrollTop = 0
-      const nav = document.getElementById('main-nav')
-      const scrollThreshold = 100 // Start hiding after scrolling 100px
-
-      window.addEventListener('scroll', () => {
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop
-
-        // Only apply hide/show behavior after scrolling past threshold
-        if (scrollTop > scrollThreshold) {
-          if (scrollTop > lastScrollTop) {
-            // Scrolling down - hide nav
-            nav.style.transform = 'translateY(-100%)'
-          } else {
-            // Scrolling up - show nav
-            nav.style.transform = 'translateY(0)'
-          }
-        } else {
-          // At top of page - always show nav
-          nav.style.transform = 'translateY(0)'
-        }
-
-        lastScrollTop = scrollTop
-      })
-    </script>
-  </body>
-</html>
+    lastScrollTop = scrollTop
+  })
+</script>

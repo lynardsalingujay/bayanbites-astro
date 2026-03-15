@@ -11,13 +11,76 @@ const { name, description, price, isMadeToOrder, image, menu_category } =
 
 // Download image at build time and get local path
 // Handle both single media and multiple media (array)
-const imageData = Array.isArray(image?.data) ? image?.data[0] : image?.data
+const imageDataArray = Array.isArray(image?.data)
+  ? image?.data
+  : image?.data
+    ? [image?.data]
+    : []
+
+// Sort by caption first, fallback to filename
+const sortedImageData = [...imageDataArray].sort((a, b) => {
+  const aCaption = a?.attributes?.caption || ''
+  const bCaption = b?.attributes?.caption || ''
+
+  if (name === 'Kimchi') {
+    console.log(
+      `Comparing: ${a?.attributes?.name} (caption: "${aCaption}") vs ${b?.attributes?.name} (caption: "${bCaption}")`,
+    )
+  }
+
+  const aCaptionNum = parseInt(aCaption)
+  const bCaptionNum = parseInt(bCaption)
+
+  if (!isNaN(aCaptionNum) && !isNaN(bCaptionNum)) {
+    if (name === 'Kimchi') {
+      console.log(
+        `  Using caption: ${aCaptionNum} vs ${bCaptionNum} = ${aCaptionNum - bCaptionNum}`,
+      )
+    }
+    return aCaptionNum - bCaptionNum
+  }
+
+  const aName = a?.attributes?.name || ''
+  const bName = b?.attributes?.name || ''
+  const aNum = parseInt(aName.match(/\d+/)?.[0] || '999')
+  const bNum = parseInt(bName.match(/\d+/)?.[0] || '999')
+  if (name === 'Kimchi') {
+    console.log(`  Using filename: ${aNum} vs ${bNum} = ${aNum - bNum}`)
+  }
+  return aNum - bNum
+})
+
+if (name === 'Kimchi') {
+  console.log(
+    'Final sorted order:',
+    sortedImageData.map(
+      (img) =>
+        `${img?.attributes?.name} (caption: ${img?.attributes?.caption})`,
+    ),
+  )
+  console.log(
+    'First image data:',
+    sortedImageData[0]?.attributes?.name,
+    'URL:',
+    sortedImageData[0]?.attributes?.url,
+  )
+}
+
+const imageData = sortedImageData[0]
 const imageUrl = await downloadStrapiImage(imageData?.attributes?.url)
+
+if (name === 'Kimchi') {
+  console.log('Downloaded image URL:', imageUrl)
+}
 const categoryName = menu_category?.data?.attributes?.categoryName
+
+// Generate slug from product name
+const slug = name.toLowerCase().replace(/\s+/g, '-')
 ---
 
-<div
-  class='group bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col border-2 border-gray-200'
+<a
+  href={`/products/${slug}`}
+  class='group bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col border-2 border-gray-200 block'
 >
   <div class='relative aspect-[16/11] overflow-hidden bg-gray-100'>
     {
@@ -72,4 +135,4 @@ const categoryName = menu_category?.data?.attributes?.categoryName
       )
     }
   </div>
-</div>
+</a>

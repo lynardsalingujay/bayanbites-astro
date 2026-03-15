@@ -107,7 +107,7 @@ export interface HomepageResponse {
 }
 
 export async function fetchStrapi<T = MenuItem>(endpoint: string): Promise<StrapiResponse<T>> {
-  const url = `${STRAPI_URL}/api/${endpoint}?populate[image][fields][0]=url&populate[image][fields][1]=alternativeText&populate[image][fields][2]=formats&populate[menu_category][fields][0]=categoryName`;
+  const url = `${STRAPI_URL}/api/${endpoint}?populate[image][fields][0]=url&populate[image][fields][1]=alternativeText&populate[image][fields][2]=formats&populate[image][fields][3]=name&populate[image][fields][4]=caption&populate[menu_category][fields][0]=categoryName`;
   
   try {
     const headers: HeadersInit = {
